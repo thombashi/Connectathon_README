@@ -39,11 +39,7 @@ NFS and Connectathon are trademarks of Sun Microsystems, Inc.
 <h1>
 <a id="introduction-to-the-connectathon-nfs-testsuites" class="anchor" href="#introduction-to-the-connectathon-nfs-testsuites" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction to the Connectathon NFS Testsuites</h1>
 
-<p>These directories contain programs that can be used to test an
-implementation of the NFS Protocol.  The tests run on a UNIX client and
-test server and client functions.  (See READWIN.txt for information
-about running on DOS and Windows.)  The tests are divided into three
-groups:</p>
+<p>These directories contain programs that can be used to test an implementation of the NFS Protocol. The tests run on a UNIX client and test server and client functions.  (See READWIN.txt for information about running on DOS and Windows.) The tests are divided into three groups:</p>
 
 <pre><code>basic   - basic file system operations tests
 general - general file system tests
@@ -51,10 +47,7 @@ special - tests that poke certain common problem areas
 lock    - tests that exercise network locking
 </code></pre>
 
-<p>This README is divided into five sections.  The first section is the
-introduction, which you are reading now.  That is followed by a
-description of what you have to do before you run the testsuites on
-your machine.  Then comes a description of how the testsuites are run
+<p>This README is divided into five sections.  The first section is the introduction, which you are reading now.  That is followed by a description of what you have to do before you run the testsuites on your machine.  Then comes a description of how the testsuites are run
 in general followed by a description of how they are used at
 Connectathon.  The last section describes what each test does in
 detail.</p>
@@ -70,8 +63,8 @@ Naperville, IL.  60563.</p>
 <p>To prepare to run the testsuites on your machine, change directories
 to the highest level testsuite directory (it should be the same one
 that contains this README file), edit tests.init according to the
-platform you are on, and type "make" to compile the test programs.  If
-you are not sure you are in the correct directory, type "ls -CF" and
+platform you are on, and type <code>make</code> to compile the test programs.  If
+you are not sure you are in the correct directory, type <code>ls -CF</code> and
 you should see the following files and directories:</p>
 
 <div class="highlight highlight-text-shell-session"><pre><span class="pl-mo">Makefile    basic/      lock/       tests.h</span>
@@ -79,24 +72,24 @@ you should see the following files and directories:</p>
 <span class="pl-mo">READWIN.txt general/    server      tools/</span>
 <span class="pl-mo">Testitems   getopt.c    special/    unixdos.h</span></pre></div>
 
-<p>The "server" script uses "getopt".  A source file of a public-domain
-version of "getopt" is included in the directory.  The Makefile will
+<p>The <code>server</code> script uses <code>getopt</code>.  A source file of a public-domain
+version of <code>getopt</code> is included in the directory.  The Makefile will
 compile it for you.</p>
 
 <p>The tests are configured according to parameters found in the script,
 tests.init.  It contains various definitions for commands and
 parameters used by the various Makefiles and shell scripts.  This file
 should be checked and then perhaps modified to correctly match your
-system.  In particular, the values of "MOUNTCMD", "UMOUNTCMD", "PATH",
-"CFLAGS", and "LIBS" should be checked and set correctly.  There are
+system.  In particular, the values of <code>MOUNTCMD</code>, <code>UMOUNTCMD</code>, <code>PATH</code>,
+<code>CFLAGS</code>, and <code>LIBS</code> should be checked and set correctly.  There are
 several sets of suggested values which may be used as possible starting
 places.</p>
 
 <p>Two special targets are included in the Makefiles: copy and dist. The
-command, "make copy DESTDIR="path"", where "path" is the absolute name
-of a directory, will cause the compiled tests to be copied to "path".
-The command, "make dist DESTDIR="path"", where "path" is the absolute
-name of a directory, will copy the test sources to "path".  DESTDIR
+command, <code>make copy DESTDIR="path"</code>, where <code>path</code> is the absolute name
+of a directory, will cause the compiled tests to be copied to <code>path</code>.
+The command, <code>make dist DESTDIR="path"</code>, where <code>path</code> is the absolute
+name of a directory, will copy the test sources to <code>path</code>.  DESTDIR
 must be specified on the make command line when making either of these
 targets.</p>
 
@@ -135,7 +128,7 @@ domount program to root.  The server script can be run as a
 nonprivileged user.  Alternately, you may login as root before you run
 server.</p>
 
-<pre><code>server [-a|-b|-g|-s|-l] [-f|-t] [-n] [-o mnt_options] [-p server_path] [-m mntpoint] [-N numpasses] server_name
+<pre lang="shell-session"><code>server [-a|-b|-g|-s|-l] [-f|-t] [-n] [-o mnt_options] [-p server_path] [-m mntpoint] [-N numpasses] server_name
 
 -a|-b|-g|-s|-l - will be passed on to the runtests scripts.  This argument
           is optional.  The default is read from the initialization
@@ -201,7 +194,7 @@ runtests) which uses tests.init to set up the test environment and then
 executes the runtest scripts in the basic, general, and/or special
 sub-directories.</p>
 
-<pre><code>runtests [-a|-b|-g|-s|-l] [-f|-n|-t] [-N numpasses] [test-directory]
+<pre lang="shell-session"><code>runtests [-a|-b|-g|-s|-l] [-f|-n|-t] [-N numpasses] [test-directory]
 
 -a             - Run the basic, general, special, and lock tests.  This
          is the default.
@@ -297,7 +290,7 @@ the test directory) has M files and P directories (creat, close, chdir,
 and mkdir).  For the -f option, N = 2, M = 2, and P = 2 so a total of
 six files and six directories are created.  For other options, N = 5,
 M = 5, and P = 2.  The files that are created are given names that
-begin with "file." and directories with names that begin with "dir.".</p>
+begin with <code>file.</code> and directories with names that begin with <code>dir.</code>.</p>
 
 <h3>
 <a id="test2-file-and-directory-removal-test" class="anchor" href="#test2-file-and-directory-removal-test" aria-hidden="true"><span class="octicon octicon-link"></span></a>test2: File and directory removal test</h3>
@@ -410,10 +403,13 @@ mkdir) and creates 200 files (creat).  The current directory is opened
 read (readdir) in a loop until the end is found.  Errors flagged are:</p>
 
 <ol>
-<li>No entry for "."</li>
-<li>No entry for ".."</li>
+<li>No entry for <code>.</code>
+</li>
+<li>No entry for <code>..</code>
+</li>
 <li>Duplicate entry</li>
-<li>Filename that doesn't begin with "file."</li>
+<li>Filename that doesn't begin with <code>file.</code>
+</li>
 <li>The suffix of the filename is out of range</li>
 <li>An entry is returned for an unlinked file. (This error can only be
 found when the test is run with an option other than -f.   For other
@@ -564,7 +560,7 @@ large compiles, and make.</p>
 
 <p>The special directory is set up to test special problems that have come
 up in the past.  These tests are meant to be advisory, things to watch
-out for.  It is not required that you "pass" these tests but we
+out for.  It is not required that you <code>pass</code> these tests but we
 strongly suggest that you do.</p>
 
 <p>The tests try to:</p>
@@ -617,18 +613,18 @@ Windows.</p>
 <ol>
 <li><p>Fix lock/tlock.c to be consistent about when to use stdarg and when
 to use varargs; reported by Samuel Sha <a href="mailto:sam@austin.ibm.com">sam@austin.ibm.com</a>.</p></li>
-<li><p>Change "make all" so that the various "runtests" scripts have the
+<li><p>Change <code>make all</code> so that the various <code>runtests</code> scripts have the
 execute bit set; reported by Erik Deumens <a href="mailto:deumens@qtp.ufl.edu">deumens@qtp.ufl.edu</a>.</p></li>
 <li><p>Removed some lint; from James Peach <a href="mailto:jpeach@sgi.com">jpeach@sgi.com</a>.</p></li>
 <li><p>Irix 6.5.19 support from James Peach <a href="mailto:jpeach@sgi.com">jpeach@sgi.com</a>.</p></li>
-<li><p>The "server" script now exports MNTOPTIONS, so that options that
-are added to "server" can be detected by the rest of the suite.
+<li><p>The <code>server</code> script now exports MNTOPTIONS, so that options that
+are added to <code>server</code> can be detected by the rest of the suite.
 From Chuck Lever <a href="mailto:Charles.Lever@netapp.com">Charles.Lever@netapp.com</a>.</p></li>
 <li><p>The tests now correctly check for errors returns from mmap().  From
 David Robinson <a href="mailto:david.robinson@sun.com">david.robinson@sun.com</a>.</p></li>
 <li><p>MacOS X support from Mike Mackovitch <a href="mailto:macko@apple.com">macko@apple.com</a>.</p></li>
 <li><p>tests.init now includes a CC= line for Linux, in case your
-distribution doesn't include "cc".  Reported by Rodney Brown
+distribution doesn't include <code>cc</code>.  Reported by Rodney Brown
 <a href="mailto:rodney@lehman.com">rodney@lehman.com</a>.</p></li>
 <li><p>Changes for AIX, from Erik Deumens <a href="mailto:deumens@qtp.ufl.edu">deumens@qtp.ufl.edu</a>.</p></li>
 <li><p>Changes for the latest Tru64 Unix, from Eric Werme
@@ -637,7 +633,7 @@ distribution doesn't include "cc".  Reported by Rodney Brown
 make(1).  Based on comments from Chuck Lever
 <a href="mailto:Charles.Lever@netapp.com">Charles.Lever@netapp.com</a> and a patch from Mike Mackovitch
 <a href="mailto:macko@apple.com">macko@apple.com</a>.</p></li>
-<li><p>The "make lint" target for the basic tests now includes subr.c.</p></li>
+<li><p>The <code>make lint</code> target for the basic tests now includes subr.c.</p></li>
 <li>
 <p>Improvements to special/bigfile2:</p>
 
@@ -667,8 +663,8 @@ McIntyre <a href="mailto:Vince.McIntyre@atnf.csiro.au">Vince.McIntyre@atnf.csiro
 <li><p>The locking tests should now work with NFS Version 4 and servers
 that enforce mandatory locking.  Thanks to Bill Baker
 <a href="mailto:bill.baker@sun.com">bill.baker@sun.com</a> for the test12 fix.</p></li>
-<li><p>The general tests have been fixed to use the "stat" program that
-comes with the tests, instead of any system "stat" program.</p></li>
+<li><p>The general tests have been fixed to use the <code>stat</code> program that
+comes with the tests, instead of any system <code>stat</code> program.</p></li>
 </ol>
 
 <h2>
@@ -684,7 +680,7 @@ from Marty Johnson <a href="mailto:martyj@traakan.com">martyj@traakan.com</a>.</
 to /mnt/'server_name'.  This is so that if the server dies or
 hangs, it is less likely to cause operational problems on the
 client.</p></li>
-<li><p>The "server" script will try to use "mkdir -p" if it's available.</p></li>
+<li><p>The <code>server</code> script will try to use <code>mkdir -p</code> if it's available.</p></li>
 <li><p>The general and special tests do a better job of checking for
 errors during initialization.</p></li>
 <li><p>The bigfile tests have been moved to the end of the special tests
@@ -698,12 +694,12 @@ because they can take so long to run.</p></li>
 <a id="changes-for-2001-include-the-following" class="anchor" href="#changes-for-2001-include-the-following" aria-hidden="true"><span class="octicon octicon-link"></span></a>Changes for 2001 include the following:</h2>
 
 <ol>
-<li><p>Added a "-N numpasses" option to the top-level "server" and
-"runtests" script.</p></li>
+<li><p>Added a <code>-N numpasses</code> option to the top-level <code>server</code> and
+<code>runtests</code> script.</p></li>
 <li><p>Updated HPUX compilation flags for the benefit of the
 special/bigfile2 test (from Anand Paladugu <a href="mailto:paladugu_anand@emc.com">paladugu_anand@emc.com</a>).</p></li>
 <li><p>Minor portability fixes to special/bigfile2.c.</p></li>
-<li><p>The basic tests no longer assume that "." is in $PATH.</p></li>
+<li><p>The basic tests no longer assume that <code>.</code> is in $PATH.</p></li>
 <li><p>The basic and special tests should be easier to build under Windows
 (from Rick Hopkins <a href="mailto:rhopkins@ssc-corp.com">rhopkins@ssc-corp.com</a>).</p></li>
 </ol>
